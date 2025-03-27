@@ -5,20 +5,12 @@ import { useContext } from "react";
 import AuthContext from "../../context/AuthContext";
 
 const Profile = () => {
-  const data = useContext(AuthContext);
-  const setToken = data.setToken;
-  const setUserId = data.setUserId;
+  const { logout } = useContext(AuthContext);
 
   return (
     <SafeAreaView>
       <View style={{ alignItems: "center" }}>
-        <Submit
-          content="Logout"
-          onPress={() => {
-            setToken(null);
-            setUserId(null);
-          }}
-        />
+        <Submit content="Logout" onPress={logout} />
       </View>
     </SafeAreaView>
   );

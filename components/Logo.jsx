@@ -1,17 +1,10 @@
 import logo from "../assets/img/logo-airbnb.png";
 import { View, Image, StyleSheet } from "react-native";
 
-const Logo = () => {
-  return <Image source={logo} style={styles.logo} />;
+const Logo = ({ style }) => {
+  return <Image source={logo} style={style} />;
 };
 
-const styles = StyleSheet.create({
-  logo: {
-    width: 100,
-    height: 130,
-    resizeMode: "contain",
-    marginTop: 40,
-  },
-});
+const styles = StyleSheet.create({});
 
 export default Logo;

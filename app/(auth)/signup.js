@@ -33,9 +33,7 @@ export default function SignUp() {
   const [view, setView] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  const data = useContext(AuthContext);
-  const setToken = data.setToken;
-  const setUserId = data.setUserId;
+  const { login } = useContext(AuthContext);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -129,8 +127,7 @@ export default function SignUp() {
                     }
                   );
 
-                  setToken(response.data.token);
-                  setUserId(response.data.id);
+                  login(response.data.token, response.data.id);
                   if (response.status === 200) {
                     alert("Account created");
                   }

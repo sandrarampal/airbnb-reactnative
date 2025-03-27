@@ -27,9 +27,7 @@ export default function SignIn() {
   const [view, setView] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  const data = useContext(AuthContext);
-  const setToken = data.setToken;
-  const setUserId = data.setUserId;
+  const { login } = useContext(AuthContext);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -38,7 +36,7 @@ export default function SignIn() {
         contentContainerStyle={styles.container}
       >
         <View>
-          <Logo />
+          <Logo style={styles.logo} />
         </View>
         <Title content="Sign in" />
         <View style={styles.form}>
@@ -85,9 +83,7 @@ export default function SignIn() {
                     }
                   );
 
-                  // console.log(response.data.token);
-                  setToken(response.data.token);
-                  setUserId(response.data.id);
+                  login(response.data.token, response.data.id);
                   if (response.status === 200) {
                     alert("connexion successful");
                   }
@@ -140,5 +136,12 @@ const styles = StyleSheet.create({
   submitButton: {
     flexDirection: "row",
     gap: 10,
+  },
+
+  logo: {
+    width: 100,
+    height: 130,
+    resizeMode: "contain",
+    marginTop: 40,
   },
 });
